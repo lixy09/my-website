@@ -51,11 +51,11 @@ export default function NavBar() {
                             label="Home"
                         />
 
-                        <NavItem
+                        {/* <NavItem
                             href="/experience"
                             icon={<CgFileDocument />}
                             label="Experience"
-                        />
+                        /> */}
 
                         <NavItem
                             href="/project"
@@ -75,12 +75,12 @@ export default function NavBar() {
                             mobile
                         />
 
-                        <NavItem
+                        {/* <NavItem
                             href="/experience"
                             icon={<CgFileDocument />}
                             label="Experience"
                             mobile
-                        />
+                        /> */}
 
                         <NavItem
                             href="/project"
