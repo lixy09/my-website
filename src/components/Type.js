@@ -10,7 +10,6 @@ export default function Type() {
                     "ICT Student",
                     "Software Developer",
                     "Freelancer",
-                    "Problem Solver",
                     "Game Developer",
                 ]}
                 loop={true}

@@ -5,12 +5,12 @@ import About from "./About";
 import { AiOutlineDownload } from "react-icons/ai";
 
 export default function Intro() {
-    const pdfFile = "../public/resume.pdf";
+    const pdfFile = "/Resume-Anan-Li.pdf";
 
     return (
         <section
             id="home"
-            className="relative w-full min-h-screen flex flex-col items-center justify-center"
+            className="relative w-full mt-20 flex flex-col items-center justify-center"
         >
             <div className="max-w-6xl w-full px-6 py-12 flex flex-col md:flex-row items-center">
                 {/* Left Text Section */}
@@ -51,6 +51,16 @@ export default function Intro() {
                             href={pdfFile}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={(e) => {
+                                e.preventDefault(); // Prevents default behavior
+                                const link = document.createElement("a");
+                                link.href = "/Resume-Anan-Li.pdf";
+                                link.download = "Resume-Anan-Li.pdf"; // Forces download
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                                setTimeout(() => window.open("/Resume-Anan-Li.pdf", "_blank"), 100); // Opens in new tab
+                            }}
                         >
                             <button className="flex items-center gap-2 bg-leave text-white px-6 py-2 rounded-md shadow hover:bg-mint transition">
                                 <AiOutlineDownload size={20} />
@@ -65,6 +75,8 @@ export default function Intro() {
                     <About />
                 </div>
             </div>
+
+            
         </section>
     );
 }

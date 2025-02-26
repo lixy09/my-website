@@ -14,7 +14,9 @@ export default {
                 leave: "#639c88",
                 dirt: "#eab676",
                 navy: "#466684",
-                salmon: "#ffb7a9"
+                salmon: "#ffb7a9",
+                tan: "#dcd1b4"
+
             },
         },
     },
