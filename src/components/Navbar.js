@@ -52,13 +52,13 @@ export default function NavBar() {
                             href="/"
                             icon={<AiOutlineHome />}
                             label="Home"
-                            onClick={() => setNavOpen(false)} // Pass onClick here
+                            onClick={() => setNavOpen(false)}
                         />
                         <NavItem
                             href="/project"
                             icon={<AiOutlineFundProjectionScreen />}
                             label="Projects"
-                            onClick={() => setNavOpen(false)} // Pass onClick here
+                            onClick={() => setNavOpen(false)}
                         />
                         <li>
                             <a
@@ -80,14 +80,14 @@ export default function NavBar() {
                             icon={<AiOutlineHome />}
                             label="Home"
                             mobile
-                            onClick={() => setNavOpen(false)} // Pass onClick here
+                            onClick={() => setNavOpen(false)}
                         />
                         <NavItem
                             href="/project"
                             icon={<AiOutlineFundProjectionScreen />}
                             label="Projects"
                             mobile
-                            onClick={() => setNavOpen(false)} // Pass onClick here
+                            onClick={() => setNavOpen(false)}
                         />
                         <li>
                             <a
