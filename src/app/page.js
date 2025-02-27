@@ -1,8 +1,8 @@
 "use client";
 import Intro from "@/components/Intro";
-import Project from "@/components/Project";
 import { FaArrowDown } from "react-icons/fa";
 import Link from "next/link";
+import About from "@/components/About";
 
 export default function Home() {
     return (
@@ -11,7 +11,7 @@ export default function Home() {
 
             {/* Scroll Down Indicator */}
             <div className="flex justify-center py-4">
-                <Link href="#project">
+                <Link href="#about">
                     <FaArrowDown
                         size={30}
                         className="text-gray-600 hover:text-mint transition animate-bounce"
@@ -19,8 +19,8 @@ export default function Home() {
                 </Link>
             </div>
 
-            <div id="project">
-                <Project />
+            <div id="about">
+                <About />
             </div>
         </div>
     );

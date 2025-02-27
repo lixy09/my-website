@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 export default function ProjectCard({
     title,
@@ -35,11 +35,11 @@ export default function ProjectCard({
 
                         <h3 className="mt-10 text-2xl font-mono">{subtitle}</h3>
 
-                        <div className="md:w-3/4 flex flex-wrap gap-2 mt-20">
+                        <div className="md:w-3/4 flex flex-wrap gap-3 mt-20">
                             {tags.map((tag) => (
                                 <span
                                     key={tag}
-                                    className="px-3 py-1 text-sm bg-gray-100 rounded-2xl"
+                                    className="px-3 py-1 text-sm bg-gray-200 rounded-2xl"
                                 >
                                     {tag}
                                 </span>
@@ -48,8 +48,8 @@ export default function ProjectCard({
 
                         {/* View Project Button */}
                         <div className="mt-20">
-                            <button className="flex items-center gap-2 text-white px-3 py-2 rounded-md shadow hover:bg-navy transition">
-                                <FaArrowRight size={20} />
+                            <button className="flex items-center gap-2 text-navy px-3 py-2 rounded-md shadow hover:bg-white transition">
+                                <FaGithub size={20} />
                             </button>
                         </div>
                     </div>

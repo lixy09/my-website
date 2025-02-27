@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/app/favicon.ico";
 import { AiOutlineHome, AiOutlineFundProjectionScreen } from "react-icons/ai";
-import { CgFileDocument } from "react-icons/cg";
 
 export default function NavBar() {
     const [navOpen, setNavOpen] = useState(false);
