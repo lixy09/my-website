@@ -22,10 +22,10 @@ export default function NavBar() {
     return (
         <nav
             className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-                navColor ? "bg-white shadow-lg" : "bg-transparent"
+                navColor ? "bg-cream shadow-lg" : "bg-transparent"
             }`}
         >
-            <div className="max-w-6xl mx-auto px-4">
+            <div className="mx-10">
                 <div className="flex items-center justify-between py-4">
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
