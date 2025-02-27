@@ -4,8 +4,8 @@ import { FaLinkedinIn, FaEnvelope, FaGithub } from "react-icons/fa";
 export default function Footer() {
     return (
         <div className="flex flex-col items-center justify-center">
-            <div className="max-w-6xl w-1/2 mx-auto bg-navy text-white rounded-3xl px-4 md:px-8 py-8 flex flex-col items-center text-center my-10">
-                <h1 className="text-3xl sm:text-4xl font-bold  mb-5">
+            <div className="max-w-6xl w-3/4 md:w-1/2 mx-auto bg-navy text-white rounded-3xl px-4 md:px-8 py-8 flex flex-col items-center text-center my-10">
+                <h1 className="text-3xl sm:text-4xl font-bold mb-5">
                     Get In Touch!
                 </h1>
                 <p className="text-base sm:text-lg mb-5">
