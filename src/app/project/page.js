@@ -9,11 +9,9 @@ export default function Home() {
 
     // Scroll to project
     const scrollToProject = (index) => {
-        const projectTop = projectRefs.current[index].offsetTop;
-        const offset = 30; // Adjust this value based on your navbar height
-        window.scrollTo({
-            top: projectTop - offset,
-            behavior: "smooth",
+        projectRefs.current[index]?.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+            block: "start",
         });
     };
 
@@ -28,40 +26,27 @@ export default function Home() {
                     }
                 });
             },
-            { threshold: 0.7 }
+            { rootMargin: "-20% 0px -35% 0px", threshold: 0 }
         );
 
-        projectRefs.current.forEach((ref) => {
-            if (ref) observer.observe(ref);
+        projectRefs.current.forEach((element) => {
+            if (element) observer.observe(element);
         });
 
-        return () => {
-            projectRefs.current.forEach((ref) => {
-                if (ref) observer.unobserve(ref);
-            });
-        };
+        return () => observer.disconnect();
     }, []);
 
     return (
-        <div className="flex min-h-screen mt-20 pt-10 px-4 md:px-8 relative">
+        <main className="projects-page">
             {/* Dot Navigation */}
-            <div className="fixed right-4 md:right-8 top-1/2 transform -translate-y-1/2 flex flex-col space-y-2 md:space-y-4">
+            <nav aria-label="Project navigation" className="project-navigation">
                 {projects.map((_, index) => (
                     <button
-                        key={index}
+                        key={projects[index].title}
+                        type="button"
+                        aria-label={`Scroll to ${projects[index].title}`}
+                        aria-current={activeDot === index ? "true" : undefined}
                         onClick={() => scrollToProject(index)}
-                        onMouseEnter={() => setActiveDot(index)}
-                        onMouseLeave={() =>
-                            setActiveDot(
-                                projectRefs.current.findIndex((ref) => {
-                                    const rect = ref.getBoundingClientRect();
-                                    return (
-                                        rect.top <= window.innerHeight / 2 &&
-                                        rect.bottom >= window.innerHeight / 2
-                                    );
-                                })
-                            )
-                        }
                         className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${
                             activeDot === index
                                 ? "bg-leave scale-75 md:scale-100"
@@ -69,26 +54,32 @@ export default function Home() {
                         } hover:scale-75 md:hover:scale-100 hover:bg-leave`}
                     />
                 ))}
-            </div>
+            </nav>
 
             {/* Projects */}
-            <div className="flex flex-col w-full">
+            <div>
                 {/* Page Title */}
-                <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-3 text-gray-800">
-                    Featured Projects
-                </h1>
-                <p className="text-base sm:text-lg md:text-xl font-italic text-center text-gray-400 mb-8">
-                    Some Things I&apos;ve Built
-                </p>
+                <header className="projects-header">
+                    <div>
+                        <p className="project-card-label">Ideas into experiences</p>
+                        <h1>Selected <span>projects.</span></h1>
+                    </div>
+                    <p className="projects-intro">A selection of things I&apos;ve built.<br />For the web, for people, for a little fun.</p>
+                </header>
 
                 {/* Render Projects Dynamically */}
                 {projects.map((project, index) => (
                     <div
-                        key={index}
-                        ref={(el) => (projectRefs.current[index] = el)}
-                        className="flex justify-center mb-8 md:mb-20"
+                        key={project.title}
+                        ref={(el) => { projectRefs.current[index] = el; }}
+                        className="project-section"
                     >
                         <ProjectCard
+                            category={project.category}
+                            period={project.period}
+                            coverTitle={project.coverTitle}
+                            coverDetail={project.coverDetail}
+                            coverStyle={project.coverStyle}
                             title={project.title}
                             subtitle={project.subtitle}
                             tags={project.tags}
@@ -100,6 +91,6 @@ export default function Home() {
                     </div>
                 ))}
             </div>
-        </div>
+        </main>
     );
 }

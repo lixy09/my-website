@@ -37,21 +37,18 @@ export default function About() {
                         <span className="font-bold text-navy">
                             web development
                         </span>{" "}
-                        for the past 2 years.
+                        for the past 4 years.
                     </p>
                     <p className="text-lg md:text-xl font-sans text-black mt-4 mb-4">
                         My main focus now is to create products and digital
                         experiences that are easy for everyone to use and enjoy.
-                        Here are a few technologies I&apos;ve been working with
-                        recently:
+                        Here are some of the technologies and practices I work with:
                     </p>
-                    <ul className="columns-2 list-disc pl-6 md:pl-10 space-y-1 text-md">
-                        <li>JavaScript (ES6+)</li>
-                        <li>React</li>
-                        <li>Sveltekit</li>
-                        <li>PHP</li>
-                        <li>Python</li>
-                        <li>Tailwind</li>
+                    <ul className="columns-1 list-disc pl-6 md:pl-10 space-y-1 text-md">
+                        <li><span className="font-bold">Languages:</span> JavaScript, TypeScript, Python, Go, PHP, C++</li>
+                        <li><span className="font-bold">Web & Framework:</span> React, SvelteKit, Laravel, Node.js</li>
+                        <li><span className="font-bold">Tools & Architecture:</span> Git, Docker, MySQL</li>
+                        <li><span className="font-bold">Engines:</span> Unreal Engine, Godot</li>
                     </ul>
                 </div>
 

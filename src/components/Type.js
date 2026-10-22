@@ -8,7 +8,7 @@ export default function Type() {
             <Typewriter
                 words={[
                     "ICT Student",
-                    "Software Developer",
+                    "Software Engineer",
                     "Freelancer",
                     "Game Developer",
                 ]}

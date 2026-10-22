@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
 
 export default function ProjectCard({
     title,
@@ -10,63 +10,77 @@ export default function ProjectCard({
     imageSrc,
     imageAlt = "Project mockup",
     aspectRatio = "auto",
+    category,
+    period,
+    coverTitle,
+    coverDetail,
+    coverStyle = "type",
 }) {
-    // Determine aspect ratio class
-    const aspectRatioClass =
-        aspectRatio === "square"
-            ? "aspect-square"
-            : aspectRatio === "portrait"
-            ? "aspect-[3/4]"
-            : aspectRatio === "video"
-            ? "aspect-video"
-            : "aspect-auto";
+    const isRepository = projectLink?.includes("github.com");
+    const Preview = projectLink ? Link : "div";
+    const previewLinkProps = projectLink ? {
+        href: projectLink,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        "aria-label": `Explore ${title} (opens in a new tab)`,
+    } : {};
 
     return (
-        <Link href={projectLink} target="_blank" rel="noopener noreferrer">
-            <div className="max-w-6xl mx-auto p-6 bg-tan rounded-2xl shadow-xl">
-                <div className="flex flex-col md:flex-row gap-8">
-                    {/* Left Side: Text Content */}
-                    <div className="flex-1">
-                        <div className="flex flex-col items-start">
-                            <h2 className="mt-4 text-3xl font-semibold text-navy">
-                                {title}
-                            </h2>
-                        </div>
-
-                        <h3 className="mt-10 text-2xl font-mono">{subtitle}</h3>
-
-                        <div className="md:w-3/4 flex flex-wrap gap-3 mt-20">
-                            {tags.map((tag) => (
-                                <span
-                                    key={tag}
-                                    className="px-3 py-1 text-sm bg-gray-200 rounded-2xl"
-                                >
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-
-                        {/* View Project Button */}
-                        <div className="mt-20">
-                            <button className="flex items-center gap-2 text-navy px-3 py-2 rounded-md shadow hover:bg-white transition">
-                                <FaGithub size={20} />
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Right Side: Image */}
-                    <div className="flex-1 flex items-center">
-                        <div className={`relative w-full ${aspectRatioClass}`}>
-                            <Image
-                                src={imageSrc}
-                                alt={imageAlt}
-                                fill
-                                className="rounded-lg object-cover"
-                            />
-                        </div>
-                    </div>
+        <article className="project-card">
+            <div className="project-card-heading">
+                <div className="project-card-kicker">
+                    <span>{category}</span>
+                    {period && <span className="project-card-period">{period}</span>}
+                </div>
+                <h2 className="project-card-title">
+                    {projectLink ? <Link href={projectLink} target="_blank" rel="noopener noreferrer">
+                        {title}
+                        <span className="sr-only"> (opens in a new tab)</span>
+                    </Link> : title}
+                </h2>
+                {projectLink && <Link
+                    href={projectLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card-link"
+                    aria-label={`${isRepository ? "View source for" : "Visit"} ${title} (opens in a new tab)`}
+                >
+                    {isRepository ? "View source" : "Visit project"}
+                    <span className="project-card-arrow"><FiArrowUpRight aria-hidden="true" /></span>
+                </Link>}
+            </div>
+            <Preview
+                {...previewLinkProps}
+                className={`project-card-image ${!imageSrc ? `project-card-cover project-card-cover-${coverStyle}` : ""}`}
+            >
+                {imageSrc ? <>
+                <div className={`project-card-image-inner ${aspectRatio === "video" ? "project-card-image-wide" : ""}`}>
+                    <Image
+                        src={imageSrc}
+                        alt={imageAlt}
+                        fill
+                        sizes="(max-width: 767px) 90vw, (max-width: 1199px) 46vw, 420px"
+                        className="object-contain"
+                    />
+                </div>
+                <span className="project-card-image-caption" aria-hidden="true">{title} / Preview</span>
+                </> : <div className="project-card-cover-content" aria-hidden="true">
+                    <span className="project-card-cover-title">{coverTitle || title}</span>
+                    <span className="project-card-image-caption">{coverDetail}</span>
+                </div>}
+            </Preview>
+            <div className="project-card-details">
+                <div>
+                    <h3 className="project-card-label">About the project</h3>
+                    <div className="project-card-description">{subtitle}</div>
+                </div>
+                <div className="project-card-stack">
+                    <h3 className="project-card-label">Built with</h3>
+                    <ul className="project-card-tags">
+                        {tags.map((tag) => <li key={tag}>{tag}</li>)}
+                    </ul>
                 </div>
             </div>
-        </Link>
+        </article>
     );
 }

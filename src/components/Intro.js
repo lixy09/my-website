@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AiOutlineDownload } from "react-icons/ai";
 
 export default function Intro() {
-    const pdfFile = "/Resume-Anan-Li.pdf";
+    const pdfFile = "/Resume_Anan_Li.pdf";
 
     return (
         <section
@@ -44,15 +44,15 @@ export default function Intro() {
                         onClick={(e) => {
                             e.preventDefault(); // Prevents default behavior
                             const link = document.createElement("a");
-                            link.href = "/Resume-Anan-Li.pdf";
-                            link.download = "Resume-Anan-Li.pdf"; // Forces download
+                            link.href = pdfFile;
+                            link.download = pdfFile;  // Forces download
                             document.body.appendChild(link);
                             link.click();
                             document.body.removeChild(link);
                             setTimeout(
                                 () =>
                                     window.open(
-                                        "/Resume-Anan-Li.pdf",
+                                        pdfFile,
                                         "_blank"
                                     ),
                                 100
