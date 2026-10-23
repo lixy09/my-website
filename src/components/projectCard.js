@@ -31,12 +31,22 @@ export default function ProjectCard({
             return;
         }
 
+        let revealTimer;
         const observer = new IntersectionObserver(([entry]) => {
-            setInView(entry.isIntersecting);
-        }, { rootMargin: "-12% 0px -15% 0px", threshold: 0.2 });
+            window.clearTimeout(revealTimer);
+
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.7) {
+                revealTimer = window.setTimeout(() => setInView(true), 400);
+            } else {
+                setInView(false);
+            }
+        }, { threshold: [0, 0.7] });
 
         if (previewRef.current) observer.observe(previewRef.current);
-        return () => observer.disconnect();
+        return () => {
+            window.clearTimeout(revealTimer);
+            observer.disconnect();
+        };
     }, [imageSrc]);
 
     const isRepository = projectLink?.includes("github.com");

@@ -62,7 +62,7 @@ export default function Home() {
                 <header className="projects-header">
                     <div>
                         <p className="project-card-label">Ideas into experiences</p>
-                        <h1>Selected <span>projects.</span></h1>
+                        <h1>Featured <span>projects.</span></h1>
                     </div>
                     <p className="projects-intro">A selection of things I&apos;ve built.<br /></p>
                 </header>

@@ -6,18 +6,26 @@ export const projects = [
     //     subtitle: "A Godot puzzle game combining Minesweeper with mosaic-style boards, configurable grids and visual clue feedback.",
     //     tags: ["Godot", "GDScript", "Grid systems", "Seeded generation", "Constraint validation"],
     //     projectLink: "https://github.com/hainany/mine-sweeper-game",
-    //     coverTitle: "Mosaic\nMinesweeper",
+    //     coverTitle: "Read the clues.\nReveal the picture.",
     //     coverDetail: "A grid-based puzzle experiment",
     //     coverStyle: "grid",
     // },
     {
         title: "D&D Character Sheet Generator",
         category: "Individual coursework",
-        period: "2026",
-        subtitle: "A Go character-management application with a command-line interface and server-rendered web pages.",
-        tags: ["Go", "net/http", "JSON", "Goroutines", "API integration", "Testing"],
+        period: "Oct 2026",
+        subtitle:
+            "A Go character-management application with a command-line interface and server-rendered web pages.",
+        tags: [
+            "Go",
+            "net/http",
+            "JSON",
+            "Goroutines",
+            "API integration",
+            "Testing",
+        ],
         projectLink: "https://github.com/HZ-ICT4-2627/mpp-lixy09",
-        coverTitle: "Character\nsheet\ngenerator.",
+        coverTitle: "Create a hero.\nStart a story.",
         coverDetail: "CLI + Web · Go",
         coverStyle: "code",
         imageSrc: "/dnd.png",
@@ -28,8 +36,15 @@ export const projects = [
         title: "Instampen",
         category: "Personal project",
         period: "Sep 2026",
-        subtitle: "A Dutch grammar practice app for verbs, fixed combinations and word order, with instant feedback, focused exercises and progress saved in the browser.",
-        tags: ["TypeScript", "React", "Next.js", "Local storage", "Responsive UI"],
+        subtitle:
+            "A Dutch grammar practice app for verbs, fixed combinations and word order, with instant feedback, focused exercises and progress saved in the browser.",
+        tags: [
+            "TypeScript",
+            "React",
+            "Next.js",
+            "Local storage",
+            "Responsive UI",
+        ],
         projectLink: "https://instampen.vercel.app/",
         coverTitle: "Learn.\nPractise.\nRepeat.",
         coverDetail: "Dutch grammar practice",
@@ -42,10 +57,11 @@ export const projects = [
         title: "Trash Cash",
         category: "Team project",
         period: "Jun – Aug 2025",
-        subtitle: "A recycling-themed clicking game prototype where players collect items, earn money and navigate an increasingly busy playfield.",
+        subtitle:
+            "A recycling-themed clicking game prototype where players collect items, earn money and navigate an increasingly busy playfield.",
         tags: ["Godot", "GDScript", "Signals", "Timers", "State management"],
         projectLink: "https://github.com/lu7ue/trash-cash",
-        coverTitle: "Trash\nCash",
+        coverTitle: "Click.\nCollect.\nCash in.",
         coverDetail: "Collect · Recycle · Play",
         coverStyle: "type",
         imageSrc: "/trash-cash.png",
@@ -54,9 +70,12 @@ export const projects = [
     },
     {
         title: "Junker",
+        coverTitle: "Less waste.\nMore possibility.",
+        coverDetail: "Second-hand finds · Community exchange",
         category: "Team coursework",
         period: "Oct 2024 – Jan 2025",
-        subtitle: "A community-based platform for exchanging second-hand items, with swipe-style browsing, item listings and local communities to encourage reuse.",
+        subtitle:
+            "A community-based platform for exchanging second-hand items, with swipe-style browsing, item listings and local communities to encourage reuse.",
         tags: [
             "Sveltekit",
             "JavaScript",
@@ -77,9 +96,12 @@ export const projects = [
     },
     {
         title: "WeatherVIS",
+        coverTitle: "Put energy\non the map.",
+        coverDetail: "An interactive view of the electricity network",
         category: "Team hackathon",
         period: "Jul 2024",
-        subtitle: "A hackathon prototype that visualises electricity-network locations on an interactive map using imported CSV data.",
+        subtitle:
+            "A hackathon prototype that visualises electricity-network locations on an interactive map using imported CSV data.",
         tags: [
             "PHP",
             "Laravel",
@@ -97,9 +119,12 @@ export const projects = [
     },
     {
         title: "Outokumpu Gemba Walk",
+        coverTitle: "Observe.\nRecord.\nImprove.",
+        coverDetail: "From workplace observations to action",
         category: "Client coursework · Team",
         period: "Feb – Jun 2024",
-        subtitle: "A web application for planning and documenting Gemba walks at Outokumpu, bringing schedules, observations and follow-up actions into one place.",
+        subtitle:
+            "A web application for planning and documenting Gemba walks at Outokumpu, bringing schedules, observations and follow-up actions into one place.",
         tags: [
             "PHP",
             "Laravel",
@@ -117,9 +142,12 @@ export const projects = [
     },
     {
         title: "Tetra's Adventure",
+        coverTitle: "Small steps.\nBig adventures.",
+        coverDetail: "Discover programming through play",
         category: "Team coursework",
         period: "Oct 2023 – Jan 2024",
-        subtitle: "An educational game that introduces children to programming through command-based puzzles, guiding an alien through levels to collect food.",
+        subtitle:
+            "An educational game that introduces children to programming through command-based puzzles, guiding an alien through levels to collect food.",
         tags: ["HTML5", "TypeScript", "JavaScript", "CSS3", "GitHub", "Canvas"],
         projectLink: "https://hz-ict-2324.github.io/oop-team02/",
         imageSrc: "/Tetra's-Adventure.png",
@@ -128,9 +156,12 @@ export const projects = [
     },
     {
         title: "Animals Wiki",
+        coverTitle: "Stay curious.\nGo wild.",
+        coverDetail: "Explore the animal world",
         category: "Coursework",
         period: "Sep 2023 – Dec 2023",
-        subtitle: "A mobile-friendly animal information website that brings together animal facts through an external API.",
+        subtitle:
+            "A mobile-friendly animal information website that brings together animal facts through an external API.",
         tags: ["JavaScript", "API", "HTML5", "CSS3", "GitHub", "Tailwind"],
         projectLink: "https://animals-wiki.onrender.com/",
         imageSrc: "/animalswiki.png",
