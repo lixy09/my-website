@@ -64,7 +64,7 @@ export default function Home() {
                         <p className="project-card-label">Ideas into experiences</p>
                         <h1>Selected <span>projects.</span></h1>
                     </div>
-                    <p className="projects-intro">A selection of things I&apos;ve built.<br />For the web, for people, for a little fun.</p>
+                    <p className="projects-intro">A selection of things I&apos;ve built.<br /></p>
                 </header>
 
                 {/* Render Projects Dynamically */}

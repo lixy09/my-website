@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
@@ -9,13 +12,33 @@ export default function ProjectCard({
     projectLink,
     imageSrc,
     imageAlt = "Project mockup",
-    aspectRatio = "auto",
     category,
     period,
     coverTitle,
     coverDetail,
     coverStyle = "type",
 }) {
+    const previewRef = useRef(null);
+    const [inView, setInView] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [imageFailed, setImageFailed] = useState(false);
+    const revealed = Boolean(imageSrc && imageLoaded && !imageFailed && inView);
+
+    useEffect(() => {
+        if (!imageSrc) return;
+        if (!("IntersectionObserver" in window)) {
+            setInView(true);
+            return;
+        }
+
+        const observer = new IntersectionObserver(([entry]) => {
+            setInView(entry.isIntersecting);
+        }, { rootMargin: "-12% 0px -15% 0px", threshold: 0.2 });
+
+        if (previewRef.current) observer.observe(previewRef.current);
+        return () => observer.disconnect();
+    }, [imageSrc]);
+
     const isRepository = projectLink?.includes("github.com");
     const Preview = projectLink ? Link : "div";
     const previewLinkProps = projectLink ? {
@@ -51,23 +74,27 @@ export default function ProjectCard({
             </div>
             <Preview
                 {...previewLinkProps}
-                className={`project-card-image ${!imageSrc ? `project-card-cover project-card-cover-${coverStyle}` : ""}`}
+                ref={previewRef}
+                className={`project-card-image project-card-cover project-card-cover-${coverStyle} ${revealed ? "is-revealed" : ""}`}
             >
-                {imageSrc ? <>
-                <div className={`project-card-image-inner ${aspectRatio === "video" ? "project-card-image-wide" : ""}`}>
-                    <Image
-                        src={imageSrc}
-                        alt={imageAlt}
-                        fill
-                        sizes="(max-width: 767px) 90vw, (max-width: 1199px) 46vw, 420px"
-                        className="object-contain"
-                    />
-                </div>
-                <span className="project-card-image-caption" aria-hidden="true">{title} / Preview</span>
-                </> : <div className="project-card-cover-content" aria-hidden="true">
-                    <span className="project-card-cover-title">{coverTitle || title}</span>
-                    <span className="project-card-image-caption">{coverDetail}</span>
+                {imageSrc && <div className="project-card-preview-layer" aria-hidden={!revealed}>
+                    <div className="project-card-image-inner">
+                        <Image
+                            src={imageSrc}
+                            alt={imageAlt}
+                            fill
+                            sizes="(max-width: 767px) 90vw, (max-width: 1199px) 46vw, 420px"
+                            className="object-contain"
+                            onLoad={() => setImageLoaded(true)}
+                            onError={() => setImageFailed(true)}
+                        />
+                    </div>
+                    <span className="project-card-image-caption" aria-hidden="true">{title} / Preview</span>
                 </div>}
+                <div className="project-card-cover-content" aria-hidden="true">
+                    <span className="project-card-cover-title">{coverTitle || title}</span>
+                    <span className="project-card-image-caption">{coverDetail || category}</span>
+                </div>
             </Preview>
             <div className="project-card-details">
                 <div>
