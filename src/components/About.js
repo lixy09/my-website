@@ -35,7 +35,7 @@ export default function About() {
                         <span className="font-bold text-navy">constantly</span>{" "}
                         presents challenges. I have been learning{" "}
                         <span className="font-bold text-navy">
-                            web development
+                            software development
                         </span>{" "}
                         for the past 4 years.
                     </p>
